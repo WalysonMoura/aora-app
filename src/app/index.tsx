@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Welcome = () => {
   return (
-    <SafeAreaView className="h-full bg-primary">
+    <SafeAreaView className="flex-1 bg-primary">
       {/*  <Loader isLoading={true} /> */}
       <ScrollView
         contentContainerStyle={{

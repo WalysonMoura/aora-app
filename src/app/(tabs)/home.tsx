@@ -22,10 +22,10 @@ export default function HomeScreen() {
         <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
         <CustomButton
-            title="Continue with Email"
-            handlePress={() => router.push("/")}
-            containerStyles="w-40 mt-7"
-          />
+          title="Continue with Email"
+          handlePress={() => router.push('/')}
+          containerStyles="w-40 mt-7"
+        />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <ThemedText type="subtitle">Step 1: Try it</ThemedText>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ActivityIndicator, Dimensions, Platform } from 'react-native';
 
-export  function Loader({ isLoading }: { isLoading: boolean }) {
+export function Loader({ isLoading }: { isLoading: boolean }) {
   const osName = Platform.OS;
   const screenHeight = Dimensions.get('screen').height;
 
@@ -9,7 +9,7 @@ export  function Loader({ isLoading }: { isLoading: boolean }) {
 
   return (
     <View
-      className="bg-primary/60 absolute z-10 flex h-full w-full items-center justify-center"
+      className="absolute z-10 flex h-full w-full items-center justify-center bg-primary/60"
       style={{
         height: screenHeight,
       }}>
