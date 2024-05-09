@@ -2,6 +2,7 @@ import { CustomButton } from '@/components/CustomButton';
 import { Loader } from '@/components/Loader';
 import { images } from '@/constants';
 import { router } from 'expo-router';
+import React from 'react';
 import { Image, ScrollView, StatusBar, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
