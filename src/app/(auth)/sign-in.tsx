@@ -1,6 +1,7 @@
 import { CustomButton } from "@/components/CustomButton";
 import FormField from "@/components/FormField";
 import { images } from "@/constants";
+import { useAuth } from "@/hooks/useAuth";
 import { getCurrentUser, signIn } from "@/lib/appwrite";
 import { Link, router } from "expo-router";
 import React, { useState } from "react";
@@ -16,6 +17,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignIn = () => {
+  const { setUser, setIsLogged } = useAuth();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -32,15 +34,13 @@ const SignIn = () => {
     try {
       await signIn(form.email, form.password);
       const user = await getCurrentUser();
-
-      
+      setUser(user);
+      setIsLogged(true);
 
       Alert.alert("Sucesso", "Usuário conectado com sucesso");
       router.replace("/home");
-
     } catch (error: any) {
       Alert.alert("Error", error.message);
-
     } finally {
       setSubmiting(false);
     }
@@ -64,7 +64,23 @@ const SignIn = () => {
             Faça login no Aora
           </Text>
 
-          {/*    <FormField/> */}
+          <FormField
+            title="Email"
+            value={form.email}
+            handleChangeText={(e) => setForm({ ...form, email: e })}
+            otherStyles="mt-7"
+            placeholder="Email"
+            keyboardType="email-address"
+          />
+
+          <FormField
+            title="Passwaord"
+            value={form.password}
+            handleChangeText={(e) => setForm({ ...form, password: e })}
+            otherStyles="mt-7"
+            placeholder="Senha"
+          />
+
           <CustomButton
             title="Entrar"
             containerStyles="mt-7"

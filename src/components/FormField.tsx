@@ -10,7 +10,7 @@ import {
 } from "react-native";
 
 type FormFieldProps = TextInputProps & {
-  title: "Passwaord" | "";
+  title: "Passwaord" | "" | "Email";
   value: string;
   placeholder: string;
   handleChangeText: (text: string) => void;
