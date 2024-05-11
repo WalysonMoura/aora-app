@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+
 type FormFieldProps = TextInputProps & {
   title: "Passwaord" | "";
   value: string;

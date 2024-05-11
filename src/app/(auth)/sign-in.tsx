@@ -1,9 +1,11 @@
 import { CustomButton } from "@/components/CustomButton";
 import FormField from "@/components/FormField";
 import { images } from "@/constants";
-import { Link } from "expo-router";
-import React from "react";
+import { getCurrentUser, signIn } from "@/lib/appwrite";
+import { Link, router } from "expo-router";
+import React, { useState } from "react";
 import {
+  Alert,
   Dimensions,
   Image,
   ScrollView,
@@ -14,6 +16,36 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignIn = () => {
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+  const [isSubmitting, setSubmiting] = useState(false);
+
+  const submit = async () => {
+    if (form.email === "" || form.password === "") {
+      Alert.alert("Error", "Por favor preencha todos os campos");
+    }
+
+    setSubmiting(true);
+
+    try {
+      await signIn(form.email, form.password);
+      const user = await getCurrentUser();
+
+      
+
+      Alert.alert("Sucesso", "Usuário conectado com sucesso");
+      router.replace("/home");
+
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+
+    } finally {
+      setSubmiting(false);
+    }
+  };
+
   return (
     <SafeAreaView className=" flex-1 bg-primary">
       <ScrollView>
@@ -34,7 +66,7 @@ const SignIn = () => {
 
           {/*    <FormField/> */}
           <CustomButton
-           title="Entrar"
+            title="Entrar"
             containerStyles="mt-7"
             handlePress={function (): void {
               throw new Error("Function not implemented.");
