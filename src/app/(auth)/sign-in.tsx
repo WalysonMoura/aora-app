@@ -84,9 +84,7 @@ const SignIn = () => {
           <CustomButton
             title="Entrar"
             containerStyles="mt-7"
-            handlePress={function (): void {
-              throw new Error("Function not implemented.");
-            }}
+            handlePress={submit}
           />
           <View className="flex justify-center pt-5 flex-row gap-2">
             <Text className="text-lg text-gray-100 font-pregular">
