@@ -22,7 +22,7 @@ import SearchInput from "@/components/SearchInput";
 import Trending from "@/components/Trending";
 import { Post } from "@/@types/post";
 
-const posts: Post[] = [
+export const posts: Post[] = [
   {
     $id: "1",
     title: "Learn React Native in 10 Minutes",
